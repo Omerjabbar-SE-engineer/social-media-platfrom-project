@@ -1,0 +1,156 @@
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #1f1c2c, #928dab);
+  color: white;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* ---------------- MAIN PROFILE CARD ---------------- */
+.profile-main-card {
+  width: 100%;
+  max-width: 800px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  backdrop-filter: blur(20px);
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* ---------------- AVATAR SECTION ---------------- */
+.profile-avatar-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.profile-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  object-fit: cover;
+}
+.avatar-upload {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #fff;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 6px 12px;
+  border-radius: 12px;
+  transition: background 0.3s;
+}
+.avatar-upload:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+.avatar-upload input {
+  display: none;
+}
+
+/* ---------------- BASIC INFO ---------------- */
+.profile-basic-info {
+  text-align: center;
+}
+.profile-basic-info h2 {
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+.profile-basic-info p {
+  margin: 4px 0;
+}
+
+/* ---------------- EXTRA INFO ---------------- */
+.profile-extra-info {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.info-block {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px 20px;
+  border-radius: 15px;
+  min-width: 110px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+.info-block:hover {
+  transform: translateY(-5px);
+}
+.info-block h3 {
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+.info-block p {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+/* ---------------- WEBSITE INFO CARDS ---------------- */
+.profile-website-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  width: 100%;
+}
+.website-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  padding: 20px 25px;
+  border-radius: 15px;
+  min-width: 220px;
+  max-width: 420px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.website-card h3 {
+  margin-bottom: 8px;
+}
+.website-card ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+/* ---------------- LOADING ---------------- */
+.profile-card.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+}
+.loader {
+  border: 5px solid rgba(255, 255, 255, 0.2);
+  border-top: 5px solid #fff;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+@media (max-width: 600px) {
+  .profile-extra-info,
+  .profile-website-info {
+    flex-direction: column;
+    align-items: center;
+  }
+  .info-block,
+  .website-card {
+    width: 90%;
+    max-width: none;
+  }
+}

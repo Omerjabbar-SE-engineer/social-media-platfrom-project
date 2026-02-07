@@ -1,0 +1,357 @@
+/* ======================= Post Card ======================= */
+.post-card {
+  background: linear-gradient(145deg, #1e1e1e, #2c2c2c);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.post-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.5);
+}
+
+.post-card h4 {
+  margin: 0 0 8px 0;
+  color: #fff;
+}
+
+.post-text {
+  margin-bottom: 12px;
+  color: #ddd;
+  line-height: 1.4;
+}
+
+/* ======================= Post Actions ======================= */
+.post-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.action-btn,
+.heart-btn,
+.post-card button {
+  padding: 8px 16px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  background: linear-gradient(45deg, #444, #666);
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.action-btn:hover,
+.heart-btn:hover,
+.post-card button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(45deg, #555, #777);
+}
+
+/* Heart like animation */
+.like-animate {
+  animation: pop 0.5s ease;
+}
+
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.6); }
+  100% { transform: scale(1); }
+}
+
+/* ======================= Modal Overlay ======================= */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* overlay above everything */
+  animation: fadeIn 0.25s ease;
+}
+
+/* ======================= Share Modal ======================= */
+.share-modal {
+  background: linear-gradient(145deg, #222, #333);
+  border-radius: 20px;
+  padding: 25px 30px;
+  width: 90%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+  text-align: center;
+  animation: scaleIn 0.25s ease;
+  position: relative;
+  z-index: 10000; /* above overlay */
+}
+
+.share-modal h3 {
+  text-align: center;
+  margin: 0;
+  color: white;
+}
+
+.share-icons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.share-icons img {
+  width: 50px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.share-icons img:hover {
+  transform: scale(1.2);
+}
+
+/* ======================= Comment Modal ======================= */
+.comment-modal {
+  background: linear-gradient(145deg, #1f1f1f, #2c2c2c);
+  border-radius: 20px;
+  padding: 25px 30px;
+  width: 95%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+  position: fixed; /* fixed for proper z-index */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10001; /* always on top */
+  animation: scaleIn 0.25s ease;
+}
+
+/* Optional close button inside modal */
+.comment-modal::before,
+.share-modal::before {
+  content: "✖";
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #fff;
+  transition: transform 0.2s;
+}
+
+.comment-modal::before:hover,
+.share-modal::before:hover {
+  transform: scale(1.2);
+}
+
+/* ======================= Comment List ======================= */
+.comment-list {
+  max-height: 250px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-right: 5px;
+}
+
+.comment-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.comment-list::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 3px;
+}
+
+.comment-list::-webkit-scrollbar-track {
+  background: #222;
+}
+
+/* ======================= Comment Card ======================= */
+.comment-card {
+  display: flex;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #2c2c36, #1f1f26);
+  box-shadow: 0 3px 12px rgba(0,0,0,0.3);
+  align-items: flex-start;
+}
+
+.comment-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #555;
+}
+
+.comment-content {
+  flex: 1;
+}
+
+.comment-header {
+  display: flex;
+  gap: 6px;
+  font-size: 13px;
+  color: #aaa;
+  margin-bottom: 4px;
+}
+
+.comment-user {
+  font-weight: bold;
+  color: #fff;
+}
+
+.comment-time {
+  color: #999;
+}
+
+.comment-text {
+  color: #ddd;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* ======================= Comment Input ======================= */
+.comment-modal textarea {
+  width: 100%;
+  border-radius: 12px;
+  padding: 12px;
+  resize: none;
+  border: none;
+  outline: none;
+  background: #333;
+  color: #fff;
+  font-size: 14px;
+  box-shadow: inset 0 0 10px rgba(255,255,255,0.05);
+  transition: all 0.2s ease;
+}
+
+.comment-modal textarea:focus {
+  box-shadow: 0 0 12px rgba(29,155,209,0.8);
+  background: #2c2c36;
+}
+
+/* ======================= Post Comment Button ======================= */
+.post-comment-btn {
+  margin-top: 8px;
+  padding: 10px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  background: linear-gradient(45deg, #1d9bf0, #1a7ed0);
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.post-comment-btn:hover {
+  transform: scale(1.05);
+}
+
+
+
+/* ======================= Compact / My Posts Cards ======================= */
+.post-card.compact {
+  padding: 12px 14px;
+  margin: 10px 0;
+  border-radius: 12px;
+  font-size: 14px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+  transition: all 0.3s ease;
+}
+
+.post-card.compact h4 {
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.post-card.compact .post-text {
+  font-size: 13px;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+
+.post-card.compact img,
+.post-card.compact video {
+  max-height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+.post-card.compact .post-actions {
+  gap: 8px;
+}
+
+.post-card.compact .post-actions button {
+  padding: 4px 10px;
+  font-size: 12px;
+}
+
+.post-card.compact:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* ======================= Delete Button ======================= */
+.delete-btn {
+  margin-left: auto; /* pushes it to the far right */
+  background: linear-gradient(45deg, #d32f2f, #f44336);
+  color: white;
+}
+
+.delete-btn:hover {
+  background: linear-gradient(45deg, #e53935, #ff5252);
+  transform: scale(1.05);
+}
+
+/* ======================= FEED MEDIA SIZE FIX ======================= */
+.post-card img,
+.post-card video {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: 260px;   /* ✅ NORMAL SIZE */
+  object-fit: contain; /* ✅ no crop, no zoom */
+  border-radius: 12px;
+  background: black;
+}
+
+/* Videos should never feel giant */
+.post-card video {
+  max-height: 240px;
+}
+
+
+
+
+
+
+
+
+
+/* ======================= Animations ======================= */
+@keyframes scaleIn {
+  0% { transform: scale(0.75) translate(-50%, -50%); opacity: 0; }
+  100% { transform: scale(1) translate(-50%, -50%); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}

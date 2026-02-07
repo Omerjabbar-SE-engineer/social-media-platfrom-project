@@ -1,0 +1,187 @@
+.shorts-root {
+  position: relative;
+  background-color: #121212;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: "Arial", sans-serif;
+  color: white;
+}
+
+/* Logo top-left with spin animation and glow */
+.shorts-logo {
+  position: fixed;
+  top: 10px;
+  left: 20px;
+  border-radius: 50%;
+  z-index: 100;
+  width: 100px;        /* logo width */
+  height: auto;
+  animation: shorts-spin-glow 5s linear infinite;
+  cursor: pointer;
+  transition: transform 0.5s ease, box-shadow 0.5s ease, filter 0.5s ease;
+}
+
+/* Hover effect: glow + scale */
+.shorts-logo:hover {
+  transform: scale(1.2) rotate(15deg);
+  box-shadow: 0 0 20px #1e90ff, 0 0 40px #00ffff, 0 0 60px #00ffffaa;
+  filter: drop-shadow(0 0 10px #00ffff);
+}
+
+/* Keyframes for continuous spin */
+@keyframes shorts-spin-glow {
+  0% {
+    transform: rotate(0deg);
+    filter: drop-shadow(0 0 5px #00ffff);
+  }
+  50% {
+    transform: rotate(180deg);
+    filter: drop-shadow(0 0 15px #00ffff);
+  }
+  100% {
+    transform: rotate(360deg);
+    filter: drop-shadow(0 0 5px #00ffff);
+  }
+}
+
+/* Logo image inside container */
+.shorts-logo img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+
+
+/* Scrollable container for reels */
+.shorts-container {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+}
+
+/* Each reel card */
+.short-card {
+  scroll-snap-align: center;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Video element */
+.short-video {
+  width: 60%;
+  max-width: 400px;
+  min-width: 250px;
+  height: auto;
+  border-radius: 30px;
+  object-fit: cover;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
+  border: 2px solid transparent;
+}
+
+.short-video:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9);
+  border: 3px solid #ff4757;
+}
+
+/* Mute button */
+.mute-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  font-size: 18px;
+  padding: 8px 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 50;
+}
+
+/* Overlay for PostCard actions */
+.short-overlay {
+  position: absolute;
+  right: calc(50% - 200px); /* Align with video */
+  bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  z-index: 50;
+}
+
+/* Compact PostCard styling for overlay */
+.post-card.compact {
+  width: 60px;
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+  border-radius: 10px;
+}
+
+.post-card.compact .post-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.post-card.compact h4,
+.post-card.compact p,
+.post-card.compact img.post-video {
+  display: none;
+}
+
+/* Like heart animation for compact */
+.heart-btn.like-animate {
+  transform: scale(1.3);
+  transition: transform 0.3s ease;
+}
+
+/* Scrollbar styling */
+.shorts-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.shorts-container::-webkit-scrollbar-track {
+  background: #1e1e1e;
+}
+
+.shorts-container::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 4px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .short-video {
+    width: 80%;
+  }
+
+  .short-overlay {
+    right: calc(50% - 160px);
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .short-video {
+    width: 90%;
+  }
+
+  .short-overlay {
+    right: calc(50% - 140px);
+    gap: 8px;
+  }
+}
